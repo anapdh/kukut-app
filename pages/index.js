@@ -1,28 +1,11 @@
 import styled from 'styled-components'
+import MainGrid from '../src/components/MainGrid/index'
+import Box from '../src/components/Box/index'
 
 // const Title = styled.h1`
 //   font-size: 50px;
 //   color: ${({ theme }) => theme.colors.primary};
 // `
-
-// CARDS 
-const Box = styled.div`
-  background: #fff;
-  border: 8px;
-`;
-
-// MAIN CONTENT - changing the main tag to a personal one
-const MainGrid = styled.main`
-  display: grid;
-  padding: 16px;
-  grid-gap: 10px;
-
-  @media (min-width: 860px) {
-    grid-template-areas:
-      "profileArea welcomeArea comuArea";
-    grid-template-columns: 160px 618px 312px;
-  }
-`;
 
 export default function Home() {
   return (
@@ -30,19 +13,23 @@ export default function Home() {
       <title>Kukut</title>
 
 
-      <div style={{gridArea: 'profileArea'}}>
+      <div className="profileArea" style={{gridArea: 'profileArea'}}>
         <Box >
-          Images
+          Profile
+          <img src="https://github.com/anapdh.png"/>
         </Box>
       </div>
 
-      <div style={{gridArea: 'welcomeArea'}}>
+      <div className="welcomeArea" style={{gridArea: 'welcomeArea'}}>
         <Box >
           Welcome
         </Box>
       </div>
 
-      <div style={{gridArea: 'comuArea'}}>
+      <div className="comuArea" style={{gridArea: 'comuArea'}}>
+        <Box >
+          Friends
+        </Box>
         <Box >
           Communities
         </Box>

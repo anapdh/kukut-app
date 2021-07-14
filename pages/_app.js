@@ -2,9 +2,17 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
   * {
+    // reset
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  }
+
+  img {
+    // make imgs responsive
+    max-width: 100%;
+    height: auto;
+    display: block;
   }
 
   body {  
