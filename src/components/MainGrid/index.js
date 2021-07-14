@@ -3,11 +3,9 @@ import styled from 'styled-components'
 // MAIN CONTENT - changing the main tag to a personal one
 const MainGrid = styled.main`
   width: 100%;
-  // max-width: 500px;
+  max-width: 500px;
   margin: 0 auto;
-  display: grid;
   padding: 16px;
-  grid-gap: 10px;
 
   .profileArea {
     display: none;
@@ -17,8 +15,10 @@ const MainGrid = styled.main`
   }
 
   @media (min-width: 860px) {
-    grid-template-areas:
-      "profileArea welcomeArea comuArea";
+    max-width: 1110px;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-areas: "profileArea welcomeArea comuArea";
     grid-template-columns: 160px 1fr 312px;
   }
 `;
