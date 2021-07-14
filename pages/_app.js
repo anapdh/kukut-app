@@ -1,4 +1,5 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
+import { AlurakutStyles } from '../src/lib/Commons'
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -25,6 +26,8 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     flex-direction: column;
   }
+
+  ${AlurakutStyles}
 `
 
 const theme = {
