@@ -30,7 +30,7 @@ function ProfileSidebar(props) {
 export default function Home() {
   const githubUser = 'anapdh'
   const favPeople = ['anapdh', 'gango-anan', 'jpdf00', 'aristides1000', 'juunegreiros', 'vichuge']
-
+  const communities = [];
 
   return (
     //used to englobe 2 tags ore more in one = agrupador
@@ -51,8 +51,11 @@ export default function Home() {
           </Box>
 
           <Box>
-            <p>Choose a name for your community:</p>
-            <form>
+            <p className="subTitle">Choose a name for your community:</p>
+            <form onSubmit={(e) => { 
+              e.preventDefault()
+              //console.log(e);
+            }}>
               <div>
                 <input
                   type="text"
@@ -61,13 +64,18 @@ export default function Home() {
                   aria-label="Select an URL for cover picture."
                 />
               </div>
-              <button type="submit">Submit</button>
+
+              <button type="submit">
+                Submit
+              </button>
+
             </form>
 
           </Box>
         </div>
 
         <div className="comuArea" style={{ gridArea: 'comuArea' }}>
+
           <ProfileRelationsBoxWrapper>
             <h4>Friends ({favPeople.length})</h4>
             <ul style={{ listStyle: 'none' }}>
@@ -81,9 +89,23 @@ export default function Home() {
               ))}
             </ul>
           </ProfileRelationsBoxWrapper>
-          <Box>
-            Communities
-          </Box>
+
+
+
+          <ProfileRelationsBoxWrapper>
+          <h4>Communities ({communities.length})</h4>  
+            <ul style={{ listStyle: 'none' }}>
+              {communities.map(comu => (
+                <li>
+                  <a href={`/users/${comu}`} key={comu}>
+                    <img src={`https://github.com/${comu}.png`} />
+                    <span>{communities}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </ProfileRelationsBoxWrapper>
+
         </div>
       </MainGrid>
     </>
