@@ -1,4 +1,5 @@
 // import styled from 'styled-components'
+import React from 'react';
 import MainGrid from '../src/components/MainGrid'
 import Box from '../src/components/Box'
 import { ProfileRelationsBoxWrapper } from '../src/components/Community'
@@ -30,7 +31,14 @@ function ProfileSidebar(props) {
 export default function Home() {
   const githubUser = 'anapdh'
   const favPeople = ['anapdh', 'gango-anan', 'jpdf00', 'aristides1000', 'juunegreiros', 'vichuge']
-  const communities = [];
+  // const community = ['Kukut'];
+  // the array will return only the [0] item. so to accesss both we use the props ans the state
+  const [communities, setCommunities] = React.useState([{
+    title: 'Eu odeio acordar cedo',
+    image: 'https://avatars3.githubusercontent.com/u/12098?v=3&s=460',
+  }]);
+  console.log(communities);
+
 
   return (
     //used to englobe 2 tags ore more in one = agrupador
@@ -55,12 +63,23 @@ export default function Home() {
             <form onSubmit={(e) => { 
               e.preventDefault()
               //console.log(e);
+              const formData = new FormData(e.target);
+              console.log(formData);
+              
+              const comu = {
+                title: formData.get('title'),
+                image: formData.get('image'),
+              }
+              // getting the old comus and news in same array
+              //using only set it would replace the old comu
+              const newComus = [...communities, comu]
+              setCommunities(newComus);
             }}>
               <div>
                 <input
                   type="text"
+                  name="title"
                   placeholder="Select an URL for cover picture."
-                  name="image"
                   aria-label="Select an URL for cover picture."
                 />
               </div>
@@ -97,9 +116,9 @@ export default function Home() {
             <ul style={{ listStyle: 'none' }}>
               {communities.map(comu => (
                 <li>
-                  <a href={`/users/${comu}`} key={comu}>
-                    <img src={`https://github.com/${comu}.png`} />
-                    <span>{communities}</span>
+                  <a href={`/users/${comu.title}`} key={comu.title}>
+                    <img src={comu.image} />
+                    <span>{comu.title}</span>
                   </a>
                 </li>
               ))}
