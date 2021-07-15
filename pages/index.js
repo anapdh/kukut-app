@@ -2,7 +2,7 @@
 import MainGrid from '../src/components/MainGrid'
 import Box from '../src/components/Box'
 import { ProfileRelationsBoxWrapper } from '../src/components/Community'
-import { AlurakutMenu } from '../src/lib/Commons'
+import { AlurakutMenu, AlurakutProfileSidebarMenuDefault, OrkutNostalgicIconSet } from '../src/lib/Commons'
 
 // const Title = styled.h1`
 //   font-size: 50px;
@@ -10,10 +10,19 @@ import { AlurakutMenu } from '../src/lib/Commons'
 // `
 
 function ProfileSidebar(props) {
-  console.log(props);
   return (
     <Box>
       <img src={`https://github.com/${props.githubUser}.png`} style={{ borderRadius: '8px' }} />
+      <hr />
+
+      <p>
+        <a className="boxLink" href={`https://github.com/${props.githubUser}`}>
+          @{props.githubUser}
+        </a>
+      </p>
+      <hr />
+
+      <AlurakutProfileSidebarMenuDefault />
     </Box>
   )
 }
@@ -34,7 +43,27 @@ export default function Home() {
 
         <div className="welcomeArea" style={{ gridArea: 'welcomeArea' }}>
           <Box>
-            Welcome
+            <h3 className="title">
+              Welcome
+            </h3>
+
+            <OrkutNostalgicIconSet />
+          </Box>
+
+          <Box>
+            <p>Choose a name for your community:</p>
+            <form>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Select an URL for cover picture."
+                  name="image"
+                  aria-label="Select an URL for cover picture."
+                />
+              </div>
+              <button type="submit">Submit</button>
+            </form>
+
           </Box>
         </div>
 
