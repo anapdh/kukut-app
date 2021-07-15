@@ -20,7 +20,7 @@ function ProfileSidebar(props) {
 
 export default function Home() {
   const githubUser = 'anapdh'
-  const favPeople = ['anapdh', 'gango-anan', 'jpdf00', 'aristides1000', 'juunegreiros', 'anapdh']
+  const favPeople = ['anapdh', 'gango-anan', 'jpdf00', 'aristides1000', 'juunegreiros', 'vichuge']
 
 
   return (
@@ -41,13 +41,13 @@ export default function Home() {
         <div className="comuArea" style={{ gridArea: 'comuArea' }}>
           <ProfileRelationsBoxWrapper>
             <h4>Friends ({favPeople.length})</h4>
-            <ul style={{listStyle: 'none'}}>
+            <ul style={{ listStyle: 'none' }}>
               {favPeople.map(user => (
-                <li key={user}>
-                  <a href={`/users/${user}`}>
-                    <ProfileSidebar githubUser={user} />
+                <li>
+                  <a href={`/users/${user}`} key={user}>
+                    <img src={`https://github.com/${user}.png`} />
                     <span>{user}</span>
-                  </a>  
+                  </a>
                 </li>
               ))}
             </ul>
